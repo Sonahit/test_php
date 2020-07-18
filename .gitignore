@@ -1,0 +1,6 @@
+vendor/
+.vscode/
+.idea
+*.cache
+*.dev.php
+report.txt

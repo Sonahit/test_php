@@ -54,7 +54,7 @@ class UniqueNamesTest extends Test
     {
         $mock = new AppUniqueNames;
         $names = ['Nama', 'Nama', 'Nama', 'Gloria', 'Joomla', 'jOomla','Workpress', 'Workpress', 'workpress'];
-        $this->assertEquals(['Nama', 'Gloria', 'Joomla', 'workpress'], $mock->uniqueNamings($names));
+        $this->assertEquals(['Nama', 'Gloria', 'Joomla', 'Workpress'], $mock->uniqueNamings($names));
     }
 
     /**

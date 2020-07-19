@@ -14,7 +14,7 @@ class FileSystem
      */
     public function getDirs(string $path)
     {
-        // 
+        //
     }
 
     /**
@@ -26,6 +26,6 @@ class FileSystem
      */
     public function getFiles(string $path)
     {
-        // 
+        //
     }
 }

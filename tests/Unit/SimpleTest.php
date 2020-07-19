@@ -60,8 +60,8 @@ class SimpleTest extends Test
      */
     public function testDivision()
     {
-        $this->assertEquals(0, $this->mock->division(2, 0));
         $this->expectException(InvalidArgumentException::class);
+        $this->assertEquals(0, $this->mock->division(2, 0));
         $this->mock->division(0, 2);
         $this->assertEquals(0.5, $this->mock->division(1, 2));
     }
@@ -73,8 +73,8 @@ class SimpleTest extends Test
      */
     public function testReplaceStrings()
     {
-        $this->assertEquals("sssssssss", $this->mock->replaceStrings("/s/", "jjjjjjjjj", "s"));
-        $this->assertEquals("asdFFF123333341123s", $this->mock->replaceStrings("/:.*/", "asdFFF123333341123:ddddd", "s"));
+        $this->assertEquals("sssssssss", $this->mock->replaceStrings("j", "jjjjjjjjj", "s"));
+        $this->assertEquals("asdFFF123333341123s", $this->mock->replaceStrings(":ddddd", "asdFFF123333341123:ddddd", "s"));
     }
 
     /**
@@ -84,8 +84,9 @@ class SimpleTest extends Test
      */
     public function testPregReplaceStrings()
     {
-        $this->assertEquals("sssssssss", $this->mock->pregReplaceStrings("j", "jjjjjjjjj", "s"));
-        $this->assertEquals("asdFFF123333341123s", $this->mock->pregReplaceStrings(":ddddd", "asdFFF123333341123:ddddd", "s"));
+        $this->assertEquals("sssssssss", $this->mock->pregReplaceStrings("/j/", "jjjjjjjjj", "s"));
+        $this->assertEquals("asdFFF123333341123s", $this->mock->pregReplaceStrings("/:.*/", "asdFFF123333341123:ddddd", "s"));
+        
     }
 
     /**
@@ -115,6 +116,7 @@ class SimpleTest extends Test
      */
     public function testArrayUnique()
     {
+        // Ключи тоже проверяются
         $this->assertEquals([1,2,3,4,5], $this->mock->arrayUnique([1,2,3,4,5,1,2,3,4,5]));
         $this->assertEquals([5,4,3,2,1], $this->mock->arrayUnique([5,4,3,4,5,2,1,3,4,5]));
     }
@@ -126,6 +128,7 @@ class SimpleTest extends Test
      */
     public function testArrayIntersects()
     {
+        // Ключи тоже проверяются
         $this->assertEquals([1,2,3,5,1,2,3,5], $this->mock->arrayIntersects([1,2,3,4,5,1,2,3,4,5], [1,2,3,8,5]));
         $this->assertEquals([5,3,5,2,3,5], $this->mock->arrayIntersects([5,4,3,4,5,2,1,3,4,5], [5,3,2,2,2]));
     }
@@ -137,6 +140,7 @@ class SimpleTest extends Test
      */
     public function testArrayDiff()
     {
+        // Ключи тоже проверяются
         $this->assertEquals([4,4], $this->mock->arrayDiff([1,2,3,4,5,1,2,3,4,5], [1,2,3,8,5]));
         $this->assertEquals([4,4,1,4], $this->mock->arrayDiff([5,4,3,4,5,2,1,3,4,5], [5,3,2,2,2]));
     }
